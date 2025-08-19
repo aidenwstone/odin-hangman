@@ -1,0 +1,2 @@
+# odin-hangman
+This program was created as part of The Odin Project. It is a Hangman game which is played on the command line, in which the player attempts to guess a word chosen by the computer, with hints being given after each guess.
