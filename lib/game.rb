@@ -23,7 +23,9 @@ class Game
   private
 
   def choose_secret_word
-    raise NotImplementedError, "#{self.class} must implement the 'choose_secret_word' method."
+    File.open('data/words.txt').readlines(chomp: true)
+        .filter { |current_word| current_word.length.between?(5, 12) }
+        .sample
   end
 
   def display_feedback
