@@ -33,6 +33,10 @@ class Game
     @revealed_word == @secret_word
   end
 
+  def lose?
+    @incorrect_guesses.length == MAX_INCORRECT_GUESSES
+  end
+
   def display_feedback
     raise NotImplementedError, "#{self.class} must implement the 'display_feedback' method."
   end
