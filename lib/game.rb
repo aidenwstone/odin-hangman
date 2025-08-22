@@ -11,7 +11,7 @@ class Game
 
   def initialize
     @available_letters = ALPHABET_LETTERS
-    @incorrect_guesses = 0
+    @incorrect_guesses = []
     @secret_word = choose_secret_word
     @player = Player.new(self)
   end
