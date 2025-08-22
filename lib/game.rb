@@ -41,6 +41,14 @@ class Game
     @incorrect_guesses.length == MAX_INCORRECT_GUESSES
   end
 
+  def clear_screen
+    if Gem.win_platform?
+      system 'cls'
+    else
+      system 'clear'
+    end
+  end
+
   def display_status
     # Display the letters of the alphabet, colored to indicate whether they have already been guessed
     colored_letters = ALPHABET_LETTERS.map { |letter| letter.colorize(display_color(letter)) }
@@ -76,6 +84,7 @@ class Game
   end
 
   def announce_result
+    clear_screen
     display_status
     incorrect_guess_count = @incorrect_guesses.length
     if win?
