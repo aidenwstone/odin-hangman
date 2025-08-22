@@ -45,6 +45,16 @@ class Game
     raise NotImplementedError, "#{self.class} must implement the 'display_feedback' method."
   end
 
+  def display_color(letter)
+    if @revealed_word.include?(letter)
+      :green
+    elsif @incorrect_guesses.include?(letter)
+      :red
+    else
+      :white
+    end
+  end
+
   def evaluate_guess(guess)
     if guess == @secret_word
       @revealed_word = guess
