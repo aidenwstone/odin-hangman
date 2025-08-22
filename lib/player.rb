@@ -13,7 +13,13 @@ class Player
   end
 
   def prompt_for_guess
-    raise NotImplementedError, "#{self.class} must implement the 'guess_word' method."
+    print "\n#{@name}, guess an available letter, or the word if you think you know it: "
+    loop do
+      guess = gets.chomp.downcase
+      return guess if (guess.length == 1 || guess.length.between?(5, 12)) && @game.available?(guess)
+
+      print "\nInvalid guess, please try again: "
+    end
   end
 
   private
