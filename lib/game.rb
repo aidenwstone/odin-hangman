@@ -21,6 +21,10 @@ class Game
     raise NotImplementedError, "#{self.class} must implement the 'play' method."
   end
 
+  def available?(guess)
+    @incorrect_guesses.none?(guess)
+  end
+
   private
 
   def choose_secret_word
