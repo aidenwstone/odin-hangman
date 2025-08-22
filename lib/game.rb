@@ -13,6 +13,7 @@ class Game
     @available_letters = ALPHABET_LETTERS
     @incorrect_guesses = []
     @secret_word = choose_secret_word
+    @revealed_word = Array.new(@secret_word.size, '_').join
     @player = Player.new(self)
   end
 
