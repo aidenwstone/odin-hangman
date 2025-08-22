@@ -18,7 +18,14 @@ class Game
   end
 
   def play
-    raise NotImplementedError, "#{self.class} must implement the 'play' method."
+    until win? || lose?
+      clear_screen
+      display_status
+      guess = @player.prompt_for_guess
+      evaluate_guess(guess)
+    end
+
+    announce_result
   end
 
   def available?(guess)
