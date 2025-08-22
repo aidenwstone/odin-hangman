@@ -29,6 +29,10 @@ class Game
         .sample
   end
 
+  def win?
+    @revealed_word == @secret_word
+  end
+
   def display_feedback
     raise NotImplementedError, "#{self.class} must implement the 'display_feedback' method."
   end
