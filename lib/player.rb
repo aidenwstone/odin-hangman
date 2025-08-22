@@ -12,7 +12,7 @@ class Player
     @name
   end
 
-  def guess_word
+  def prompt_for_guess
     raise NotImplementedError, "#{self.class} must implement the 'guess_word' method."
   end
 
