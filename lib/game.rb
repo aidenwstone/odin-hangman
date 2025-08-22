@@ -41,7 +41,7 @@ class Game
     @incorrect_guesses.length == MAX_INCORRECT_GUESSES
   end
 
-  def display_feedback
+  def display_status
     raise NotImplementedError, "#{self.class} must implement the 'display_feedback' method."
   end
 
