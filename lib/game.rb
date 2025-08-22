@@ -42,7 +42,15 @@ class Game
   end
 
   def display_status
-    raise NotImplementedError, "#{self.class} must implement the 'display_feedback' method."
+    # Display the letters of the alphabet, colored to indicate whether they have already been guessed
+    colored_letters = ALPHABET_LETTERS.map { |letter| letter.colorize(display_color(letter)) }
+    colored_letters.each_slice(6) do |slice|
+      puts slice.join(' ')
+    end
+    # Display the current revealed word
+    puts "\n#{@revealed_word.chars.join(' ')}"
+    # Display remaining incorrect guesses
+    puts "\nYou have #{MAX_INCORRECT_GUESSES - @incorrect_guesses.length} incorrect guesses remaining."
   end
 
   def display_color(letter)
@@ -68,6 +76,13 @@ class Game
   end
 
   def announce_result
-    raise NotImplementedError, "#{self.class} must implement the 'announce_result' method."
+    display_status
+    incorrect_guess_count = @incorrect_guesses.length
+    if win?
+      puts "\nCongratulations, you won the game with #{incorrect_guess_count} incorrect guesses!"
+    else
+      puts "\nOops, you made #{incorrect_guess_count} incorrect guesses, thereby losing the game."
+    end
+    puts "The secret word was \"#{@secret_word}.\""
   end
 end
