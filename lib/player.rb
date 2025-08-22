@@ -19,6 +19,7 @@ class Player
   private
 
   def prompt_for_name
-    raise NotImplementedError, "#{self.class} must implement the 'prompt_for_name' method."
+    print 'Please enter your name: '
+    gets.chomp
   end
 end
